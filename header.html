@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black & White Navbar</title>
+    <style>
+        /* Your existing CSS styles for the navbar go here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #000000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .navbar-brand {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand:hover {
+            color: #cccccc;
+            transform: scale(1.05);
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ffffff;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: #cccccc;
+        }
+
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-cta {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-cta:hover {
+            background-color: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: #cccccc;
+        }
+
+        /* Demo Content (not needed in header.html, but keeping for completeness if it was part of original header.html) */
+        .demo-content {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-content h1 {
+            font-size: 3rem;
+            color: #000000;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .demo-content p {
+            font-size: 1.2rem;
+            color: #666666;
+            margin-bottom: 40px;
+        }
+
+        .demo-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .demo-card h3 {
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .demo-card p {
+            color: #333333;
+            line-height: 1.8;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .navbar-container {
+                height: 60px;
+                padding: 0 15px;
+            }
+
+            .navbar-brand {
+                font-size: 22px;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: #000000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                z-index: 999;
+                opacity: 0;
+                transform: translateX(-100%);
+                transition: all 0.4s ease;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .navbar-item {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+            }
+
+            .navbar-menu.active .navbar-item {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .navbar-menu.active .navbar-item:nth-child(1) { transition-delay: 0.1s; }
+            .navbar-menu.active .navbar-item:nth-child(2) { transition-delay: 0.2s; }
+            .navbar-menu.active .navbar-item:nth-child(3) { transition-delay: 0.3s; }
+            .navbar-menu.active .navbar-item:nth-child(4) { transition-delay: 0.4s; }
+            .navbar-menu.active .navbar-item:nth-child(5) { transition-delay: 0.5s; }
+            .navbar-menu.active .navbar-item:nth-child(6) { transition-delay: 0.6s; }
+
+            .navbar-link {
+                font-size: 20px;
+                font-weight: 600;
+                color: #ffffff;
+                padding: 12px 0;
+                text-align: center;
+            }
+
+            .navbar-link:hover {
+                color: #cccccc;
+            }
+
+            .navbar-cta {
+                margin-top: 20px;
+                padding: 12px 30px;
+                font-size: 16px;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+            }
+
+            .navbar-menu.active .navbar-cta {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.7s;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .demo-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .demo-content p {
+                font-size: 1rem;
+            }
+
+            .demo-card {
+                padding: 20px;
+                margin: 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 0 10px;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+
+            .demo-content {
+                padding: 50px 15px;
+            }
+
+            .demo-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">MyBrand</a>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li class="navbar-item">
+                    <a href="#home" class="navbar-link">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#services" class="navbar-link">Services</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#portfolio" class="navbar-link">Portfolio</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#about" class="navbar-link">About</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#contact" class="navbar-link">Contact</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#login" class="navbar-cta">
+                        <span>Get Started</span>
+                        <span>→</span>
+                    </a>
+                </li>
+            </ul>
+
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                ☰
+            </button>
+        </div>
+    </nav>
+</body>
+</html>
