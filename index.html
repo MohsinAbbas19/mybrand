@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YourLogo - Professional Digital Solutions</title>
+    <title>YourCompany - Innovative Digital Solutions</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
+        /* Your existing CSS styles go here */
+        /* Base Styles - for consistent typography and spacing */
         * {
             margin: 0;
             padding: 0;
@@ -15,111 +19,65 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Grid Pattern Overlay */
-        .grid-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 1;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: 2;
-        }
-
-        .hero-content {
+        section {
+            padding: 80px 0; /* Standard section padding */
             text-align: center;
-            color: white;
-            z-index: 3;
-            max-width: 800px;
-            padding: 0 20px;
             position: relative;
+            overflow: hidden; /* For background effects */
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+        h1, h2, h3, h4 {
+            color: #000;
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards;
+            font-weight: 700;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.3s forwards;
+        h1 {
+            font-size: 3.5em;
+            letter-spacing: -2px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.6s forwards;
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
         }
 
         .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
+            display: inline-block;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 30px;
             text-decoration: none;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 16px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1;
+            margin-top: 20px;
         }
 
         .btn::before {
@@ -131,779 +89,747 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s ease;
+            z-index: -1;
         }
 
         .btn:hover::before {
             left: 100%;
         }
 
-        /* Floating Animation */
-        .floating-shapes {
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(circle at top left, rgba(0,0,0,0.05) 1%, transparent 30%),
+                                 radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 1%, transparent 30%);
+            background-size: 40px 40px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        #hero .hero-content {
             z-index: 1;
+            max-width: 900px;
+            padding: 20px;
+            animation: fadeInScale 1s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.95);
         }
 
-        .shape {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        #hero h1 {
+            color: #000;
+            margin-bottom: 25px;
+            font-size: 4.2em;
+            line-height: 1.1;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
         }
 
-        .shape:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            bottom: 30%;
-            left: 80%;
-            animation-delay: 4s;
+        #hero p {
+            font-size: 1.3em;
+            color: #444;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
         /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: #ffffff;
-            position: relative;
-            z-index: 5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+        #services {
+            background-color: #ffffff;
+            /* grid pattern overlay */
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .03) 25%, rgba(0, 0, 0, .03) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .03) 75%, rgba(0, 0, 0, .03) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .03) 25%, rgba(0, 0, 0, .03) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .03) 75%, rgba(0, 0, 0, .03) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            background-repeat: repeat;
         }
 
         .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: left; /* Align text left inside card */
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px); /* Glassmorphism effect */
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3.5em;
+            color: #000;
+            margin-bottom: 20px;
+            display: block; /* Ensure icon is on its own line */
+            text-align: center; /* Center the icon */
+            background: linear-gradient(135deg, #000, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            color: #000;
+            text-align: center;
+        }
+
+        .service-card p {
+            font-size: 1em;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: #f0f4f8;
+            padding: 80px 0;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto; /* Allows horizontal scrolling if needed */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
+            gap: 30px;
+            justify-content: center; /* Center testimonials if there's space */
+        }
+
+        .testimonial-card {
+            flex: 0 0 350px; /* Fixed width for card, but allows shrinking */
+            max-width: 90%; /* Max width for smaller screens */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            scroll-snap-align: start;
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #000;
+            font-size: 1.1em;
+        }
+
+        .testimonial-author span {
+            display: block;
+            font-size: 0.9em;
+            color: #777;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        /* Portfolio Preview Section */
+        #portfolio-preview {
+            background-color: #ffffff;
+            padding: 80px 0;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .03) 25%, rgba(0, 0, 0, .03) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .03) 75%, rgba(0, 0, 0, .03) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .03) 25%, rgba(0, 0, 0, .03) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .03) 75%, rgba(0, 0, 0, .03) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            background-repeat: repeat;
+        }
+
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
         .portfolio-item {
-            background: white;
-            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: left;
             transition: all 0.3s ease;
-            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .portfolio-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: 600;
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
         }
 
         .portfolio-content {
-            padding: 30px;
+            padding: 25px;
         }
 
         .portfolio-content h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #000;
+            font-size: 1.4em;
             margin-bottom: 10px;
+            color: #000;
         }
 
         .portfolio-content p {
+            font-size: 0.95em;
             color: #666;
             margin-bottom: 15px;
         }
 
-        .portfolio-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-tag {
-            background: #f8f9fa;
+        .portfolio-content .project-tag {
+            display: inline-block;
+            background-color: #e9ecef;
+            color: #555;
             padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #666;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
         }
 
-        /* Achievements Section */
-        .achievements {
-            padding: 100px 0;
-            background: white;
+        /* Why Choose Us / FAQ Section */
+        #why-choose-us {
+            background-color: #e0e8f0;
+            padding: 80px 0;
         }
 
-        .achievements-grid {
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
-        .achievement-card {
-            text-align: center;
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 30px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
-        .achievement-card:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .achievement-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .feature-card i {
+            font-size: 3.5em;
+            color: #000;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #000, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6em;
             margin-bottom: 10px;
         }
 
-        .achievement-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 50px;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
+        .feature-card p {
+            font-size: 1em;
             color: #666;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
 
-        .about-image {
-            height: 400px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: 600;
+
+        /* Call to Action Section */
+        #cta {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            padding: 80px 20px;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: white;
+        #cta h2 {
+            color: #fff;
+            font-size: 2.8em;
+            line-height: 1.2;
+            margin-bottom: 25px;
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-top: 50px;
+        #cta p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        #cta .btn {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        #cta .btn:hover {
+            background: #eee;
+            color: #000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
         }
 
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .admin-panel-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .admin-panel-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        /* Responsive Design (adjusted to account for iframe header/footer) */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3em;
+            }
+            h2 {
+                font-size: 2.2em;
+            }
+            #hero h1 {
+                font-size: 3.5em;
+            }
+            #hero p {
+                font-size: 1.1em;
+            }
+            .service-card, .testimonial-card, .portfolio-item, .feature-card {
+                padding: 25px;
+            }
+            .service-card i, .feature-card i {
+                font-size: 3em;
+            }
+            #cta h2 {
+                font-size: 2.4em;
+            }
+            #cta p {
+                font-size: 1.1em;
+            }
+            .testimonial-card {
+                flex: 0 0 320px;
             }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-
-            .services,
-            .portfolio,
-            .achievements,
-            .about,
-            .contact {
+            section {
                 padding: 60px 0;
             }
-
-            .admin-panel-btn {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .container {
+                padding: 30px 15px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            #hero {
+                min-height: 70vh;
+            }
+            #hero h1 {
+                font-size: 2.8em;
+            }
+            #hero p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 15px;
+            }
+            .services-grid, .portfolio-grid, .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .service-card, .portfolio-item, .feature-card {
+                text-align: center;
+                padding: 20px;
+            }
+            .service-card i, .feature-card i {
+                font-size: 3em;
+                margin-bottom: 15px;
+            }
+            .service-card h3, .portfolio-content h3, .feature-card h3 {
+                text-align: center;
+            }
+            .service-card p, .portfolio-content p, .feature-card p {
+                text-align: center;
+            }
+            #cta h2 {
+                font-size: 2em;
+            }
+            #cta p {
+                font-size: 1em;
+            }
+            .testimonial-carousel {
+                justify-content: flex-start;
+            }
+            .testimonial-card {
+                flex: 0 0 90%;
+            }
+            .portfolio-content .project-tag {
+                margin-right: 5px;
+                margin-bottom: 5px;
             }
         }
 
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            #hero h1 {
+                font-size: 2.2em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .service-card h3, .portfolio-content h3, .feature-card h3 {
+                font-size: 1.5em;
+            }
+            .service-card p, .portfolio-content p, .feature-card p {
+                font-size: 0.95em;
+            }
+            .testimonial-card p {
+                font-size: 1em;
+            }
+            .testimonial-author {
+                font-size: 1em;
+            }
         }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Include Header -->
+    
+    <div id="header-container"></div>
+
+ <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Crafting Digital Experiences, Driving Success.</h1>
+                <p>We provide innovative web development, digital marketing, and business solutions to help your brand thrive in the digital age.</p>
+                <a href="#services" class="btn">Explore Our Services</a>
+                <a href="#contact" class="btn" style="background: none; border: 2px solid #000; color: #000; margin-left: 20px;">Get a Quote</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Our Specialized Services</h2>
+                <p>Empowering businesses with cutting-edge digital solutions tailored to your unique needs.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Website Development</h3>
+                        <p>From captivating designs to robust backends, we build high-performance websites for all industries, including specialized solutions for healthcare (hospitals, clinics).</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Boost your online presence and reach your target audience with expert Facebook marketing, comprehensive social media strategies, SEO, and targeted campaigns.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Business Solutions</h3>
+                        <p>Streamline operations, enhance productivity, and drive growth with custom software development, data analytics, and strategic IT consulting tailored to your business challenges.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Custom Web Applications</h3>
+                        <p>Develop bespoke web applications designed to automate workflows, manage complex data, and provide unique functionalities for your business operations.</p>
+                    </div>
+                </div>
+                <a href="services.html" class="btn">View All Services</a> </div>
+        </section>
+
+        <section id="how-we-work" style="background-color: #e0e8f0;">
+            <div class="container">
+                <h2>Our Approach to Digital Excellence</h2>
+                <p>We follow a transparent and agile process to deliver exceptional results for every project.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>1. Discovery & Planning</h3>
+                        <p>Thorough understanding of your vision, goals, and target audience to lay a solid foundation.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>2. Design & Development</h3>
+                        <p>Bringing your ideas to life with stunning designs and robust, scalable coding practices.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>3. Testing & Launch</h3>
+                        <p>Rigorous testing ensures flawless performance before a smooth and successful launch.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>4. Support & Optimization</h3>
+                        <p>Ongoing support, maintenance, and continuous optimization to keep your digital assets performing at their best.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio-preview">
+            <div class="container">
+                <h2>Selected Client Projects</h2>
+                <p>A glimpse into our diverse work, showcasing our ability to deliver tailored solutions for various industries.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/f8f9fa/333333?text=Hospital+Website" alt="Hospital Website Project">
+                        <div class="portfolio-content">
+                            <h3>MediCare Hospital Portal</h3>
+                            <p>A comprehensive web portal designed for patient management, online appointments, and secure data handling for a leading hospital.</p>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">Patient Portal</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/f8f9fa/333333?text=E-commerce+Platform" alt="E-commerce Platform Project">
+                        <div class="portfolio-content">
+                            <h3>Fashionova E-commerce Store</h3>
+                            <p>A stylish and scalable e-commerce platform with integrated payment gateways and intuitive product management for a fashion brand.</p>
+                            <span class="project-tag">E-commerce</span>
+                            <span class="project-tag">Digital Marketing</span>
+                            <span class="project-tag">UI/UX</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/f8f9fa/333333?text=Clinic+Management" alt="Clinic Management Software">
+                        <div class="portfolio-content">
+                            <h3>ClinicPro Management System</h3>
+                            <p>Custom-built software for streamlined clinic operations, including appointment scheduling, patient records, and billing.</p>
+                            <span class="project-tag">Business Solution</span>
+                            <span class="project-tag">Healthcare</span>
+                            <span class="project-tag">Custom Software</span>
+                        </div>
+                    </div>
+                   <div class="portfolio-item">
+                        <img src="https://via.placeholder.com/600x400/f8f9fa/333333?text=Restaurant+Website" alt="Restaurant Website Project">
+                        <div class="portfolio-content">
+                            <h3>The Gourmet Spot - Online Presence</h3>
+                            <p>A vibrant, responsive website for a local restaurant, featuring online menu, reservations, and a gallery.</p>
+                            <span class="project-tag">Hospitality</span>
+                            <span class="project-tag">Web Design</span>
+                            <span class="project-tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="portfolio.html" class="btn">View Our Full Portfolio</a> </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from the businesses we've helped succeed in the digital landscape.</p>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-card">
+                        <p>"YourCompany transformed our outdated website into a modern, user-friendly platform. Their attention to detail and communication were exceptional!"</p>
+                        <div class="testimonial-author">
+                            Sarah Khan<span>CEO, MediCare Hospital</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The digital marketing strategies implemented by YourCompany significantly boosted our online sales and brand visibility. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            Ahmed Raza<span>Founder, Fashionova</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"We needed a custom solution for our clinic, and YourCompany delivered beyond our expectations. The new system is incredibly efficient."</p>
+                        <div class="testimonial-author">
+                            Dr. Sana Malik<span>Clinic Director, HealthFirst</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Their team is truly professional and dedicated. Our new website perfectly captures our brand essence and functionality needs."</p>
+                        <div class="testimonial-author">
+                            Omar Butt<span>Owner, The Gourmet Spot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-choose-us">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find quick answers to common questions about our services and process.</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>What services do you offer?</h3>
+                        <p>We specialize in website development, digital marketing (SEO, social media, paid ads), custom web applications, and comprehensive IT consulting and business solutions, including tailored solutions for healthcare.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>How do you price your projects?</h3>
+                        <p>Project pricing varies based on scope, complexity, and required features. We offer transparent, competitive quotes after a detailed consultation to understand your needs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>What is your typical project timeline?</h3>
+                        <p>Timelines depend on project size. A basic website might take 4-6 weeks, while complex web applications can take several months. We'll provide an estimated timeline after discovery.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Do you offer post-launch support?</h3>
+                        <p>Yes, absolutely! We provide ongoing maintenance, technical support, security updates, and performance optimization to ensure your digital assets run smoothly.</p>
+                    </div>
+                   <div class="feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Do you work with international clients?</h3>
+                        <p>Yes, our team is equipped to collaborate with clients globally. We use online communication tools to ensure seamless project management regardless of location.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Can you help with digital marketing after development?</h3>
+                        <p>Certainly! We offer comprehensive digital marketing services including SEO, social media management, content marketing, and paid advertising to boost your online presence post-launch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta">
+            <div class="container">
+                <h2>Ready to Transform Your Digital Presence?</h2>
+                <p>Let's discuss your project and turn your vision into a stunning reality. Get a free consultation today!</p>
+                <a href="contact.html" class="btn">Contact Us Now</a>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-container"></div>
+
+
+    
+
     <script>
+       // Load header
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
-                document.body.insertAdjacentHTML('afterbegin', data);
+                document.getElementById('header-container').innerHTML = data;
+                // Initialize header-specific JavaScript AFTER it's loaded
+                initHeaderScripts(); 
             });
-    </script>
 
-    <!-- Grid Pattern -->
-    <div class="grid-pattern"></div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Professional Digital Solutions</h1>
-            <p>We create exceptional websites, provide digital marketing services, and deliver business solutions that drive growth and success.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">
-                    <span>Our Services</span>
-                    <span>→</span>
-                </a>
-                <a href="#portfolio" class="btn btn-secondary">
-                    <span>View Portfolio</span>
-                    <span>📁</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Our Services</h2>
-                <p>We offer comprehensive digital solutions to help your business thrive in the digital world</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll">
-                    <span class="service-icon">🏥</span>
-                    <h3>Healthcare Websites</h3>
-                    <p>Specialized website development for hospitals, clinics, and medical practices with patient management systems.</p>
-                </div>
-                
-                <div class="service-card animate-on-scroll">
-                    <span class="service-icon">📱</span>
-                    <h3>Digital Marketing</h3>
-                    <p>Facebook marketing, social media management, and comprehensive digital marketing strategies.</p>
-                </div>
-                
-                <div class="service-card animate-on-scroll">
-                    <span class="service-icon">💼</span>
-                    <h3>Business Solutions</h3>
-                    <p>Custom business applications, e-commerce solutions, and digital transformation services.</p>
-                </div>
-                
-                <div class="service-card animate-on-scroll">
-                    <span class="service-icon">📊</span>
-                    <h3>Portfolio Management</h3>
-                    <p>Professional portfolio websites and content management systems for showcasing your work.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Our Portfolio</h2>
-                <p>Showcasing our recent projects and successful client collaborations</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item animate-on-scroll">
-                    <div class="portfolio-image">Hospital Site</div>
-                    <div class="portfolio-content">
-                        <h3>Medical Center Website</h3>
-                        <p>Complete website solution for a modern healthcare facility with appointment booking system.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">PHP</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item animate-on-scroll">
-                    <div class="portfolio-image">E-Commerce</div>
-                    <div class="portfolio-content">
-                        <h3>Online Store Platform</h3>
-                        <p>Full-featured e-commerce solution with payment integration and inventory management.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item animate-on-scroll">
-                    <div class="portfolio-image">Marketing</div>
-                    <div class="portfolio-content">
-                        <h3>Digital Marketing Campaign</h3>
-                        <p>Comprehensive social media marketing strategy that increased client engagement by 300%.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Facebook Ads</span>
-                            <span class="tech-tag">Instagram</span>
-                            <span class="tech-tag">Analytics</span>
-                            <span class="tech-tag">SEO</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section class="achievements" id="achievements">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Our Achievements</h2>
-                <p>Numbers that speak for our success and client satisfaction</p>
-            </div>
-            
-            <div class="achievements-grid">
-                <div class="achievement-card animate-on-scroll">
-                    <div class="achievement-number">150+</div>
-                    <div class="achievement-text">Projects Completed</div>
-                </div>
-                
-                <div class="achievement-card animate-on-scroll">
-                    <div class="achievement-number">95%</div>
-                    <div class="achievement-text">Client Satisfaction</div>
-                </div>
-                
-                <div class="achievement-card animate-on-scroll">
-                    <div class="achievement-number">50+</div>
-                    <div class="achievement-text">Happy Clients</div>
-                </div>
-                
-                <div class="achievement-card animate-on-scroll">
-                    <div class="achievement-number">3+</div>
-                    <div class="achievement-text">Years Experience</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>About Us</h2>
-                <p>Learn more about our journey and commitment to excellence</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text animate-on-scroll">
-                    <h3>Your Digital Success Partner</h3>
-                    <p>We are a dedicated team of professionals committed to providing exceptional digital solutions. Our expertise spans across web development, digital marketing, and business solutions.</p>
-                    <p>With years of experience in the industry, we understand the unique challenges businesses face in the digital landscape. Our mission is to help you overcome these challenges and achieve sustainable growth.</p>
-                    <a href="#contact" class="btn btn-primary">
-                        <span>Get In Touch</span>
-                        <span>📞</span>
-                    </a>
-                </div>
-                <div class="about-image animate-on-scroll">
-                    About Us
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Contact Us</h2>
-                <p>Ready to start your next project? Get in touch with us today</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info animate-on-scroll">
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@yourlogo.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+92 300 1234567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Lahore, Punjab, Pakistan</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form animate-on-scroll">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <span>📤</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Admin Panel Button -->
-    <a href="#admin" class="admin-panel-btn" title="Admin Panel">
-        ⚙️
-    </a>
-
-    <!-- Include Footer -->
-    <script>
+        // Load footer
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
+                document.getElementById('footer-container').innerHTML = data;
+
             });
-    </script>
 
-    <!-- JavaScript for Animations -->
-    <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // This function will contain the JavaScript logic for your header
+        function initHeaderScripts() {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+            const body = document.body;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
+            if (!mobileToggle || !navbarMenu) {
+                console.error("Mobile menu elements not found. Header HTML might not be loaded or elements have wrong IDs.");
+                return;
+            }
+
+            function toggleMobileMenu() {
+                navbarMenu.classList.toggle('active');
+                
+                if (navbarMenu.classList.contains('active')) {
+                    body.style.overflow = 'hidden';
+                    mobileToggle.innerHTML = '✕'; // Change to close icon
+                } else {
+                    body.style.overflow = '';
+                    mobileToggle.innerHTML = '☰'; // Change back to hamburger icon
+                }
+            }
+
+            mobileToggle.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when clicking on nav links
+            const navLinks = navbarMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Only close if in mobile view and menu is active
+                    if (window.innerWidth <= 768 && navbarMenu.classList.contains('active')) {
+                        // Small delay to allow smooth scroll to initiate before closing menu
+                        setTimeout(() => {
+                            toggleMobileMenu();
+                        }, 200); 
+                    }
+                });
+            });
+
+            // Handle window resize: Close menu if resized to desktop view while open
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && navbarMenu.classList.contains('active')) {
+                    toggleMobileMenu();
                 }
             });
-        }, observerOptions);
 
-        // Observe all animate-on-scroll elements
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            // Close menu with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navbarMenu.classList.contains('active')) {
+                    toggleMobileMenu();
                 }
             });
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-
-        // Admin panel button click
-        document.querySelector('.admin-panel-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Admin Panel access - Please implement your authentication system here.');
-        });
+        }
     </script>
+
 </body>
 </html>
